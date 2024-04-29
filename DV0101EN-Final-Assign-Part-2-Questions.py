@@ -114,7 +114,7 @@ def update_output_container(selected_statistics, input_year):
 
 # Plot 4 bar chart for the effect of unemployment rate on vehicle type and sales
         unemp_sales = recession_data.groupby(['unemployment_rate', 'Vehicle_Type'])['Automobile_Sales'].mean().reset_index()
-        R_chart4 - dcc.Graph(figure=px.bar(unemp_sales,
+        R_chart4 = dcc.Graph(figure=px.bar(unemp_sales,
         x='unemployment_rate',
         y='Automobile_Sales',
         labels={'unemployment_rate': 'Unemployment Rate', 'Automobile_Sales': 'Average Automobile Sales'},
@@ -160,12 +160,12 @@ def update_output_container(selected_statistics, input_year):
             figure=px.pie(exp_data, 
             values='Advertising_Expenditure',
             names='Vehicle_Type',
-            title='Total Advertisement Expenditure for Each Vehicle'))
+            title='Total Advertisment Expenditure for Each Vehicle'))
 
 #TASK 2.6: Returning the graphs for displaying Yearly data
         return [
                 html.Div(className='chart-item', children=[html.Div(children=Y_chart1),html.Div(children=Y_chart2)],style={'display':'flex'}),
-                html.Div(className='chart-item', children=[html.Div(childreen=Y_chart3),html.Div(choldren=Y_chart4)],style={'display': 'flex'})
+                html.Div(className='chart-item', children=[html.Div(children=Y_chart3),html.Div(children=Y_chart4)],style={'display': 'flex'})
                 ]
         
     else:
@@ -174,7 +174,5 @@ def update_output_container(selected_statistics, input_year):
 # Run the Dash app
 if __name__ == '__main__':
     app.run_server(debug=True)
-
-
 
 
